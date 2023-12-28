@@ -17,10 +17,9 @@ public class Person {
     private Title title;
 
     public String getFullName() {
-        String fullName = (this.middleName.isBlank() || this.middleName == null) ? this.firstName + " " + this.lastName :
-                this.firstName + " " + this.middleName + " " + this.lastName;
 
-        return fullName;
+        return (this.middleName == null || this.middleName.isBlank()) ? this.firstName + " " + this.lastName :
+                this.firstName + " " + this.middleName + " " + this.lastName;
     }
 
 }

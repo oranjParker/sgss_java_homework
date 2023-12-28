@@ -48,7 +48,7 @@ public class Main {
         });
 
         Random random = new Random();
-        List<String> names = new ArrayList<String>(personMap.keySet());
+        List<String> names = new ArrayList<>(personMap.keySet());
         String someName = names.get(random.nextInt(names.size()));
         String businessName = personMap.get(someName);
 
@@ -57,6 +57,12 @@ public class Main {
         Person employee = business.getEmployeeByName(someName);
         System.out.println(employee.getFullName() + " { ID: " + employee.getEmployeeId() + ", Title: " + employee.getTitle() + " }");
 
+        System.out.println("\nRemoving " + employee.getFullName() + " from " + businessName + ": ");
+        business.removePersonById(employee.getEmployeeId());
+        for (Person person : business.getListOfEmployees()) {
+            personMap.put(person.getFullName(), business.getBusinessName());
+            System.out.println(person.getFullName() + " { ID: " + person.getEmployeeId() + ", Title: " + person.getTitle() + " }");
+        }
     }
 
     public static Business findBusinessByName(String name, Map<String, Business> businessMap) {

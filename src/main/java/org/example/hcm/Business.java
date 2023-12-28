@@ -19,4 +19,8 @@ public class Business {
                 .orElse(null);
     }
 
+    public void removePersonById(long id) {
+        listOfEmployees.removeIf(person -> person.getEmployeeId() == id);
+    }
+
 }
